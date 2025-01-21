@@ -55,21 +55,24 @@ class Solution {
         sort(arr.begin(), arr.end());
     int left = 0, right = n - 1;
     int c=0;
-    set<vector<int>>ans;
+    vector<vector<int>>ans;
     while (left < right) {
         int sum = arr[left] + arr[right];
         if (sum == 0) {
-           ans.insert({arr[left],arr[right]});
+           ans.push_back({arr[left],arr[right]});
            left++;
            right--;
+           while(left<right&&arr[left]==arr[left-1])
+           left++;
+           while(left<right&&arr[right]==arr[right+1])
+           right--;
+           
         }
         else if (sum < 0) left++;
         else right--;
     }
-    vector<vector<int>>v;
-    for(auto x:ans)
-    v.push_back(x);
-    return v;
+   
+    return ans;
     }
 };
 
