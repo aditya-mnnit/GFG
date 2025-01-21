@@ -1,17 +1,16 @@
 //{ Driver Code Starts
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
 
 
-
 // } Driver Code Ends
-class Solution
-{
-    public:
-    void sort012(int arr[], int n)
-    {
-        // code here 
+class Solution {
+  public:
+    void sort012(vector<int>& arr) {
+        // code here
+          int n=arr.size();
         int l=0,m=0,h=n-1;
+      
         while(m<=h)
         {
             if(arr[m]==0)
@@ -30,9 +29,7 @@ class Solution
                 h--;
             }
         }
-    
     }
-    
 };
 
 //{ Driver Code Starts.
@@ -40,28 +37,30 @@ int main() {
 
     int t;
     cin >> t;
+    cin.ignore();
+    while (t--) {
 
-    while(t--){
-        int n;
-        cin >>n;
-        int a[n];
-        for(int i=0;i<n;i++){
-            cin >> a[i];
+        vector<int> a;
+        string input;
+        int num;
+
+        getline(cin, input);
+        stringstream s2(input);
+        while (s2 >> num) {
+            a.push_back(num);
         }
-
         Solution ob;
-        ob.sort012(a, n);
+        ob.sort012(a);
 
-        for(int i=0;i<n;i++){
-            cout << a[i]  << " ";
+        int n = a.size();
+        for (int i = 0; i < n; i++) {
+            cout << a[i] << " ";
         }
 
         cout << endl;
-        
-        
+        cout << "~" << endl;
     }
     return 0;
 }
-
 
 // } Driver Code Ends
