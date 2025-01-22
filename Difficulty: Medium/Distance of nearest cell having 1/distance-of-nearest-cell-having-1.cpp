@@ -20,8 +20,8 @@ class Solution {
                 if(grid[i][j]==1)
                 {
                     q.push({i,j});
-                    vis[i][j]=1;
-                    grid[i][j]=0;
+                    // vis[i][j]=1;
+                    grid[i][j]=-1;
                 }
             }
         }
@@ -37,25 +37,25 @@ class Solution {
                 q.pop();
                 int xx=x.first;
                 int yy=x.second;
-                if(xx>=0&&yy-1>=0&&xx<n&&yy-1<m&&vis[xx][yy-1]==0)
+                if(xx>=0&&yy-1>=0&&xx<n&&yy-1<m&&grid[xx][yy-1]==0)
                 {
                     grid[xx][yy-1]=k;
                      vis[xx][yy-1]=1;
                     q.push({xx,yy-1});
                 }
-                 if(xx>=0&&yy+1>=0&&xx<n&&yy+1<m&&vis[xx][yy+1]==0)
+                 if(xx>=0&&yy+1>=0&&xx<n&&yy+1<m&&grid[xx][yy+1]==0)
                 {
                     grid[xx][yy+1]=k;
                      vis[xx][yy+1]=1;
                     q.push({xx,yy+1});
                 }
-                 if(xx+1>=0&&yy>=0&&xx+1<n&&yy<m&&vis[xx+1][yy]==0)
+                 if(xx+1>=0&&yy>=0&&xx+1<n&&yy<m&&grid[xx+1][yy]==0)
                 {
                     grid[xx+1][yy]=k;
                      vis[xx+1][yy]=1;
                     q.push({xx+1,yy});
                 }
-                 if(xx-1>=0&&yy>=0&&xx-1<n&&yy<m&&vis[xx-1][yy]==0)
+                 if(xx-1>=0&&yy>=0&&xx-1<n&&yy<m&&grid[xx-1][yy]==0)
                 {
                     grid[xx-1][yy]=k;
                     vis[xx-1][yy]=1;
@@ -65,20 +65,21 @@ class Solution {
             k++;
             c++;
         }
-    //   for(int i=0;i<n;i++)
-    //   {
-    //       for(int j=0;j<m;j++)
-    //       {
-    //           if(grid[i][j]==1)
-    //           return -1;
-    //       }
-    //   }
+      for(int i=0;i<n;i++)
+      {
+          for(int j=0;j<m;j++)
+          {
+              if(grid[i][j]==-1)
+             grid[i][j]=0;
+          }
+      }
        
         // return max(0,c-1);
         return grid;
      
     }
 };
+
 
 //{ Driver Code Starts.
 int main() {
@@ -101,7 +102,9 @@ int main() {
             }
             cout << "\n";
         }
-    }
+    
+cout << "~" << "\n";
+}
     return 0;
 }
 // } Driver Code Ends
